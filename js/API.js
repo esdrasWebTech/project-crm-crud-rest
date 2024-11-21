@@ -32,3 +32,15 @@ export const getClients = async () =>{
         console.log(error);
     };
 };
+
+//Delete client of the list
+export const deleteClient = async id => {
+    try{
+        await fetch(`${url}/${id}`, {
+            method: 'DELETE'
+        });
+
+    }catch (error){
+        console.log(error);
+    };
+};

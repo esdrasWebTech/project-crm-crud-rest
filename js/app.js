@@ -1,11 +1,14 @@
-import { getClients } from './API.js';
+import { getClients, deleteClient } from './API.js';
 
 //initialize application
 (function () {
 
+    //variables
     const clientList = document.querySelector('#listado-clientes');
 
+    //Events Listeners
     document.addEventListener('DOMContentLoaded', showClients);
+    clientList.addEventListener('click', messageDeleteClient);
 
     // Show clients in the index page
     async function showClients() {
@@ -36,6 +39,17 @@ import { getClients } from './API.js';
 
             clientList.appendChild(row);
         });
+    };
+
+    function messageDeleteClient (e){
+        if(e.target.classList.contains('eliminar')){
+            const clientId = e.target.dataset.cliente;
+            const messageConfirm = confirm('¿Deseas eliminar el cliente?');
+
+            if(messageConfirm){
+                deleteClient(clientId);
+            }
+        }
     };
 
 })();
