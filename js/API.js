@@ -44,3 +44,36 @@ export const deleteClient = async id => {
         console.log(error);
     };
 };
+
+// get client by id 
+export const checkClient = async id =>{
+
+    try{
+        const res = await fetch(`${url}/${id}`);
+        const resultClient = await res.json();
+        return resultClient;
+
+    }catch(error){
+        console.log(error);
+    };
+};
+
+// update client in DB
+export const updateClientInfo = async clientObj =>{
+
+    try{
+        await fetch(`${url}/${clientObj.id}`, {
+            method: 'PUT',
+            body: JSON.stringify(clientObj),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        })
+
+        window.location.href = 'index.html'
+
+    }catch(error){
+        console.log(error);
+    };
+
+};

@@ -1,4 +1,4 @@
-import { createAlert } from './funciones.js';
+import { createAlert, validateClientForm } from './funciones.js';
 import { addClient } from './API.js';
 
 ( function(){
@@ -35,11 +35,6 @@ import { addClient } from './API.js';
         //add new client in DB
         addClient(clientObj);
 
-    };
-
-    // Validating client object
-    function validateClientForm(clientObj) {
-        return !Object.values(clientObj).every( field => field.trim() !== '');
     };
 
 })();

@@ -20,12 +20,18 @@ export function createAlert(message) {
         newClientForm.appendChild(alertMessage);
 
         const submitBtn = document.querySelector('input[type="submit"]');
-        submitBtn.disabled = true; 
-        
+        submitBtn.disabled = true;
+
         //remove alert HTML
         setTimeout(() => {
-            submitBtn.disabled = false; 
+            submitBtn.disabled = false;
             alertMessage.remove();
         }, 3000);
     }
-}; 
+};
+
+
+// Validating client object
+export function validateClientForm(clientObj) {
+    return !Object.values(clientObj).every(field => field.trim() !== '');
+};
